@@ -5,12 +5,10 @@ import org.skypro.skyshop1.model.product.DiscountedProduct;
 import org.skypro.skyshop1.model.product.FixPriceProduct;
 import org.skypro.skyshop1.model.product.Product;
 import org.skypro.skyshop1.model.product.SimpleProduct;
+import org.skypro.skyshop1.model.search.Searchable;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class StorageService {
@@ -49,5 +47,13 @@ public class StorageService {
     public Collection<Article> getAllArticles() {
         return articles.values();
     }
+    // Метод получения всех Searchable (для поиска)
+    public Collection<Searchable> getAllSearchables() {
+        List<Searchable> list = new ArrayList<>();
+        list.addAll(products.values());
+        list.addAll(articles.values());
+        return list;
+    }
+
 }
 
