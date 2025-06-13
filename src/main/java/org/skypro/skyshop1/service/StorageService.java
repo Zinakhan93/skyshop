@@ -49,10 +49,10 @@ public class StorageService {
     }
     // Метод получения всех Searchable (для поиска)
     public Collection<Searchable> getAllSearchables() {
-        List<Searchable> list = new ArrayList<>();
-        list.addAll(products.values());
-        list.addAll(articles.values());
-        return list;
+        List<Searchable> searchableItems = new ArrayList<>();
+        searchableItems.addAll(products.values());
+        searchableItems.addAll(articles.values());
+        return searchableItems;
     }
 
 }

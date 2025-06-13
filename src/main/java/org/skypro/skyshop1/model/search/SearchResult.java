@@ -1,6 +1,4 @@
-package org.skypro.skyshop1.service;
-
-import org.skypro.skyshop1.model.search.Searchable;
+package org.skypro.skyshop1.model.search;
 
 public class SearchResult {
     private final String id;

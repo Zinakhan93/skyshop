@@ -1,6 +1,6 @@
 package org.skypro.skyshop1.controller;
 
-import org.skypro.skyshop1.service.SearchResult;
+import org.skypro.skyshop1.model.search.SearchResult;
 import org.skypro.skyshop1.service.SearchService;
 import org.skypro.skyshop1.service.StorageService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,9 +30,9 @@ public class ShopController {
         return storageService.getAllArticles();
     }
     // Новый метод поиска
-    // Новый метод поиска
+
     @GetMapping("/search")
-    public List<SearchResult> search(@RequestParam("pattern") String pattern) {
+    public Collection<SearchResult> search(@RequestParam String pattern) {
         return searchService.search(pattern);
     }
 
