@@ -1,13 +1,11 @@
 package org.skypro.skyshop1.model.basket;
 
-import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-@Component
 @SessionScope
 public class ProductBasket {
     private final Map<UUID,Integer> products = new HashMap<>();
@@ -29,7 +27,6 @@ public class ProductBasket {
     }*/
 
     //Возвращает все товары и их количества в виде неизменяемой карты.
-     public Map<UUID, Integer> getProductsInBasket() {
          return Collections.unmodifiableMap(products);
      }
 
