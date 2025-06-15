@@ -1,7 +1,7 @@
 package org.skypro.skyshop1.controller;
-import java.util.UUID;
-
+import org.skypro.skyshop1.model.article.Article;
 import org.skypro.skyshop1.model.basket.UserBasket;
+import org.skypro.skyshop1.model.product.Product;
 import org.skypro.skyshop1.model.search.SearchResult;
 import org.skypro.skyshop1.service.BasketService;
 import org.skypro.skyshop1.service.SearchService;
@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.rmi.server.UID;
 import java.util.Collection;
-import java.util.List;
-
+import java.util.UUID;
 
 @RestController
 public class ShopController {
@@ -25,22 +23,23 @@ public class ShopController {
     public ShopController(StorageService storageService, SearchService searchService,BasketService basketService) {
         this.storageService = storageService;
         this.searchService = searchService;
-        this.basketService =basketService;
+        this.basketService = basketService;
     }
 
     @GetMapping("/products")
-    public Collection<?> getAllProducts() {
+    public Collection<Product> getAllProducts() {
         return storageService.getAllProducts();
     }
 
     @GetMapping("/articles")
-    public Collection<?> getAllArticles() {
+    public Collection<Article> getAllArticles() {
         return storageService.getAllArticles();
     }
     // Новый метод поиска
+    // Новый метод поиска
 
     @GetMapping("/search")
-    public Collection<SearchResult> search(@RequestParam String pattern) {
+    public Collection<SearchResult> search(@RequestParam("pattern") String pattern) {
         return searchService.search(pattern);
     }
     @GetMapping("/basket/{id}")
