@@ -20,7 +20,7 @@ public class ShopController {
     private final SearchService searchService;
     private final BasketService basketService;
 
-    public ShopController(StorageService storageService, SearchService searchService,BasketService basketService) {
+    public ShopController(StorageService storageService, SearchService searchService, BasketService basketService) {
         this.storageService = storageService;
         this.searchService = searchService;
         this.basketService = basketService;
@@ -42,6 +42,7 @@ public class ShopController {
     public Collection<SearchResult> search(@RequestParam("pattern") String pattern) {
         return searchService.search(pattern);
     }
+
     @GetMapping("/basket/{id}")
     public String addProduct(@PathVariable("id") UUID id) {
         basketService.addProduct(id);
@@ -53,6 +54,6 @@ public class ShopController {
         return basketService.getUserBasket();
     }
 
-
-
 }
+
+
