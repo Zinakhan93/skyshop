@@ -23,7 +23,7 @@ public class SearchService {
                 .map(SearchResult::fromSearchable)
                 .collect(Collectors.toList());
     }
-
+ 
 
 
    /* public List<SearchResult> search(String pattern) {
