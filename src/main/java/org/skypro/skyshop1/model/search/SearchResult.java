@@ -1,18 +1,21 @@
-package org.skypro.skyshop1.service;
+package org.skypro.skyshop1.model.search;
 
-import org.skypro.skyshop1.model.search.Searchable;
+import org.springframework.stereotype.Service;
+
+import java.util.UUID;
+
 
 public class SearchResult {
-    private final String id;
+    private final UUID id;
     private final String name;
     private final String contentType;
 
-    public SearchResult(String id, String name, String contentType) {
+    public SearchResult(UUID id, String name, String contentType) {
         this.id = id;
         this.name = name;
         this.contentType = contentType;
     }
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -25,6 +28,8 @@ public class SearchResult {
     }
     // Статический фабричный метод для создания SearchResult из Searchable
     public static SearchResult fromSearchable(Searchable s) {
-        return new SearchResult(s.getId().toString(), s.getSearchableName(), s.getContentType());
+        return new SearchResult(s.getId(),
+                s.getSearchableName(),
+                s.getContentType());
     }
 }

@@ -26,8 +26,9 @@ public class StorageService {
         addProduct(new FixPriceProduct(UUID.randomUUID(), "Молоко"));
         addProduct(new DiscountedProduct(UUID.randomUUID(), "Хлеб", 150, 10));
         addProduct(new SimpleProduct(UUID.randomUUID(), "Кефир", 80));
-        addArticle(new Article(UUID.randomUUID(), "Кефир", "Содержание жиров 0%"));
-        addArticle(new Article(UUID.randomUUID(), "Хлеб", "Содержание злаков"));
+        addArticle(new Article(UUID.randomUUID(), "Яблоко", "Яблоко содержит высокое содержание железа"));
+        addArticle(new Article(UUID.randomUUID(), "Молоко","Молоко содержит высокое содержание кальция"));
+        addArticle(new Article(UUID.randomUUID(),"Кефир", "Кефир полезен для очищения желудка"));
 
     }
 
@@ -43,16 +44,21 @@ public class StorageService {
     public Collection<Product> getAllProducts() {
         return products.values();
     }
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(products.get(id));
+    }
+
+
 
     public Collection<Article> getAllArticles() {
         return articles.values();
     }
     // Метод получения всех Searchable (для поиска)
     public Collection<Searchable> getAllSearchables() {
-        List<Searchable> list = new ArrayList<>();
-        list.addAll(products.values());
-        list.addAll(articles.values());
-        return list;
+        List<Searchable> searchableItems = new ArrayList<>();
+        searchableItems.addAll(products.values());
+        searchableItems.addAll(articles.values());
+        return searchableItems;
     }
 
 }
